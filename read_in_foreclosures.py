@@ -7,7 +7,7 @@ import pandas as pd
 
 url = "http://gts.co.jefferson.co.us/index.aspx"
 # create a new Firefox session
-driver = webdriver.Firefox(executable_path='C:/Users/kirst/Downloads/geckodriver-v0.26.0-win64/geckodriver.exe')
+driver = webdriver.Firefox(executable_path='C:/Users/kirst/Downloads/geckodriver-v0.32.0-win64/geckodriver.exe')
 driver.implicitly_wait(30)
 driver.get(url)
 
@@ -22,8 +22,9 @@ driver.implicitly_wait(10)
 accept_button = driver.find_element_by_id("ctl00_ContentPlaceHolder1_btnShowAll")
 accept_button.click()
 
-df = pd.DataFrame(columns = ["FC #", "Owner Name", "Street", "Zip", "Subdivision", "Balance Due", "Status"])
-#Flip through all of the records and save them
+df = pd.DataFrame(columns = ["FC #", "Owner Name", "Street", "Zip", "Subdivision", "Balance Due", "Status"],
+                             dtype=object)
+#Flip through the records and save them
 
 for n in range(2, 16):
     for i in range(3):
